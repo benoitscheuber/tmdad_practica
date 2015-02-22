@@ -1,0 +1,56 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cliente MVC Twitter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta
+ content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"
+ id="Viewport" name="viewport" />
+<!-- Bootstrap -->
+<link rel="stylesheet" media="screen"
+ href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" 
+ th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"/>
+<!-- Optional theme -->
+<link rel="stylesheet"
+ href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+ th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css}"/>
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"
+th:src="@{/webjars/jquery/2.1.3/jquery.min.js}"></script>
+<script
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+ th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
+<script th:src="@{/functions.js}" src="../static/functions.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+</head>
+<body>
+ <nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+   <p class="navbar-brand">Cliente MVC Twitter</p>
+   <p class="navbar-text">Desarrollo de Aplicaciones Distribuidas
+    2014-2015</p>
+  </div>
+  <div class="nav navbar-right">
+   <a title="UNIZAR" href="http://www.unizar.es"><img height="50"
+    th:src="@{/logoUZ.png}" src="../static/logoUZ.png" alt="" /></a>
+  </div>
+ </nav>
+ <div class="container">
+  <!-- Formulario principal -->
+  <form id="search" action="search" method="get">
+   <div class="row">
+    <input type="text" class="form-control" id="q" name="q"
+     placeholder="Escribe algo que quieras buscar"/>
+   </div>
+   <div class="row">&nbsp;</div>
+   <div class="row">
+    <button type="submit" class="btn btn-default center-block" >Buscar</button>
+   </div>
+  </form>
+  <div class="row">&nbsp;</div>
+  <div id="resultsBlock"></div>  
+ </div>
+</body>
+</html>

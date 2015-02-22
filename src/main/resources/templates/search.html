@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Cliente MVC Twitter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta
+ content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"
+ id="Viewport" name="viewport" />
+<!-- Bootstrap -->
+<link rel="stylesheet" media="screen"
+ href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+<!-- Optional theme -->
+<link rel="stylesheet"
+ href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css" />
+<!-- Latest compiled and minified JavaScript -->
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script
+ src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+ <div class="row panel panel-default" th:fragment="content" th:each="tweet: ${res.tweets}">
+  <div class="panel-heading">
+   <a href="https://twiter.com/jracing_rte" th:href="@{https://twiter.com/{user}(user=${tweet.fromUser})}" 
+    target="_blank"><b th:text="${'@'+tweet.fromUser}">@jracing_rte</b></a>
+   <div class="pull-right">
+    <a href="https://twiter.com/jracing_rte/status/556867274335059969"
+     th:href="@{https://twiter.com/{user}/status/{id}(user=${tweet.fromUser},id=${tweet.id})}"
+     target="_blank"><span class="glyphicon glyphicon-link"></span></a>
+   </div>
+  </div>
+  <div class="panel-body" th:text="${tweet.unmodifiedText}">CR28: iguala el record de Messi en la
+   primera vuelta http://t.co/zmYnja4gYP vía @marca</div>
+ </div>
+</body>
+</html>
