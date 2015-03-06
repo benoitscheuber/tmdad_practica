@@ -17,12 +17,13 @@
  th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap-theme.min.css}"/>
 <!-- Latest compiled and minified JavaScript -->
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"
-th:src="@{/webjars/jquery/2.1.3/jquery.min.js}"></script>
+th:src="@{//cdn.jsdelivr.net/webjars/jquery/2.1.3/jquery.min.js}"></script>
 <script
  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
  th:src="@{/webjars/bootstrap/3.3.1/js/bootstrap.min.js}"></script>
 <script th:src="@{/functions.js}" src="../static/functions.js"></script>
 <!-- Latest compiled and minified JavaScript -->
+<script th:src="@{//cdn.jsdelivr.net/webjars/mustachejs/0.7.0/mustache.js}"></script>
 </head>
 <body>
  <nav class="navbar navbar-default" role="navigation">
@@ -50,7 +51,21 @@ th:src="@{/webjars/jquery/2.1.3/jquery.min.js}"></script>
    </div>
   </form>
   <div class="row">&nbsp;</div>
-  <div id="resultsBlock"></div>  
+  <div id="resultsBlock">
+	<script id="tweet" type="x-tmpl-mustache">
+		{{#tweets}}
+			<div class="row panel panel-default">
+				<div class="panel-heading">
+				<a target="_blank" href="https://twitter.com/{{fromUser}}"><b>@{{user.name}}</b></a>
+					<div class="pull-right">
+					<a target="_blank" href="https://twitter.com/{{fromUser}}/status/{{id_str}}"><span class="glyphicon glyphicon-link"></span></a>
+					</div>
+				</div>
+				<div class="panel-body">{{text}}</div>
+			</div>
+		{{/tweets}}
+	</script>
+ </div> 
  </div>
 </body>
 </html>
