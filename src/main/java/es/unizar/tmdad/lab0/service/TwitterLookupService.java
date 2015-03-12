@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.social.twitter.api.Stream;
@@ -18,6 +19,9 @@ import es.unizar.tmdad.lab0.controller.SimpleStreamListener;
 @Service
 public class TwitterLookupService {
 	
+	private static final int MAX_STREAMS = 10;
+	
+	@Autowired
 	private SimpMessageSendingOperations messagingTemplate;
 	private static Map<String, Stream> queries = new HashMap<String, Stream>();
 	
@@ -34,6 +38,15 @@ public class TwitterLookupService {
 	private String accessTokenSecret;
 	
 	public void search(String query) {
+		
+		if(!queries.containsValue(query)){
+			if(queries.size() >= MAX_STREAMS){
+			String clave = queries.keySet().iterator().next();
+			queries.get(clave).close();
+			queries.remove(clave);
+			}
+		}
+			
 		Twitter twitter = new TwitterTemplate(consumerKey, consumerSecret, accessToken, accessTokenSecret);
 		List<StreamListener> list = new ArrayList<StreamListener>();
 		list.add(new SimpleStreamListener(messagingTemplate, query));

@@ -33,7 +33,7 @@ function subscribe(query){
 		var tweet = JSON.parse(data.body);
 		var template = $('#tweet').html();
 		var html = Mustache.render(template, tweet);
-		$('#resultsBlock').prepend(html);
+		$('#resultsBlock').append(html);
 	},
 	{ id: query });
 }
